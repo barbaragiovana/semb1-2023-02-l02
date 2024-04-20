@@ -118,6 +118,8 @@ int main(int argc, char *argv[])
   uint32_t *pGPIOC_OTYPER = (uint32_t *)STM32_GPIOC_OTYPER;
   uint32_t *pGPIOC_PUPDR  = (uint32_t *)STM32_GPIOC_PUPDR;
   uint32_t *pGPIOC_BSRR   = (uint32_t *)STM32_GPIOC_BSRR;
+  uint32_t *pGPIOA_MODER = (uint32_t *)STM32_GPIOA_MODER;
+  uint32_t *pGPIOA_IDR = (uint32_t *)STM32_GPIOA_IDR; 
 
   /* Habilita clock GPIOC */
 
@@ -142,18 +144,22 @@ int main(int argc, char *argv[])
   reg |= (GPIO_PUPDR_NONE << GPIO_PUPDR_SHIFT(13));
   *pGPIOC_PUPDR = reg;
 
-  while(1)
-    {
-      /* Liga LED */
+  /*Configuraa PA0 como entrada*/
+  reg = *pGPIOA_MODER;
+  reg &= ~GPIO_MODER_MASK(0);
+  *pGPIOA_MODER = reg;
 
-      *pGPIOC_BSRR = GPIO_BSRR_RESET(13);
-      for (i = 0; i < LED_DELAY; i++);
-
-      /* Desliga LED */
-
-      *pGPIOC_BSRR = GPIO_BSRR_SET(13);
-      for (i = 0; i < LED_DELAY; i++);
-    }
+    while (1)
+  {
+      if (*pGPIOA_IDR & (1 << 0))  // Checa se o botão em PA0 está pressionado
+      {
+          *pGPIOC_BSRR = GPIO_BSRR_RESET(13);  // Liga o LED (assumindo ativo baixo)
+      }
+      else
+      {
+          *pGPIOC_BSRR = GPIO_BSRR_SET(13);  // Desliga o LED
+      }
+  }
 
   /* Nunca deveria chegar aqui */
 
