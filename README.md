@@ -6,7 +6,7 @@ A lista de exercícios é composta por questões teóricas e práticas. A soluç
 
 As questões teóricas estão disponibilizadas no arquivo **Questionario.md** e devem ser respondidas no mesmo arquivo. Será permitida a utilização de recursos multimídia como imagens obtidas da internet, desde que sejam de domínio público e estejam devidamente referenciadas. **Todas** as respostas devem ser de autoria do estudante, não será permitido cópias. A solução e o envio destas atividades devem ser disponibilizadas no repositório dos estudante.
 
-As atividades práticas podem ser encontradas no arquivo **Laboratorio.md**. A solução e o envio destas atividades devem ser disponibilizadas no repositório dos estudante.
+As atividades práticas podem ser encontradas no arquivo **Laboratorio.md**. A solução e o envio destas atividades devem ser disponibilizadas no repositório dos estudantes.
 
 ## Referências
 
